@@ -1,0 +1,42 @@
+# Build outputs
+bin/
+obj/
+out/
+publish/
+
+# NuGet
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+.nuget/
+
+# Visual Studio / Rider / VS Code
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.DotSettings.user
+
+# Build logs
+*.log
+*.binlog
+TestResult*.xml
+[Tt]est[Rr]esult*/
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Avalonia
+*.tmp_proj
+*.csproj.FileListAbsolute.txt
+
+# Claude Code local session state
+.claude/

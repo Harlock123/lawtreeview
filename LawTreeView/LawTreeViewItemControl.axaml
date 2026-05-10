@@ -1,0 +1,95 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:LawTreeView.Controls"
+             xmlns:media="clr-namespace:Avalonia.Media;assembly=Avalonia.Base"
+             xmlns:imaging="clr-namespace:Avalonia.Media.Imaging;assembly=Avalonia.Base"
+             x:Class="LawTreeView.Controls.LawTreeViewItemControl"
+             x:DataType="controls:LawTreeViewItem">
+    <UserControl.Styles>
+        <Style Selector="StackPanel.row">
+            <Setter Property="Background"
+                    Value="{Binding $parent[controls:LawTreeView].ItemBackground}" />
+        </Style>
+        <Style Selector="StackPanel.row:pointerover">
+            <Setter Property="Background"
+                    Value="{Binding $parent[controls:LawTreeView].ItemHoverBackground}" />
+        </Style>
+        <Style Selector="StackPanel.row.selected">
+            <Setter Property="Background"
+                    Value="{Binding $parent[controls:LawTreeView].SelectedItemBackground}" />
+            <Setter Property="TextElement.Foreground"
+                    Value="{Binding $parent[controls:LawTreeView].SelectedItemForeground}" />
+        </Style>
+        <Style Selector="StackPanel.row.selected:pointerover">
+            <Setter Property="Background"
+                    Value="{Binding $parent[controls:LawTreeView].SelectedItemBackground}" />
+            <Setter Property="TextElement.Foreground"
+                    Value="{Binding $parent[controls:LawTreeView].SelectedItemForeground}" />
+        </Style>
+        <Style Selector="StackPanel.row PathIcon">
+            <Setter Property="Foreground"
+                    Value="{Binding $parent[controls:LawTreeView].Foreground}" />
+        </Style>
+        <Style Selector="StackPanel.row.selected PathIcon">
+            <Setter Property="Foreground"
+                    Value="{Binding $parent[controls:LawTreeView].SelectedItemForeground}" />
+        </Style>
+    </UserControl.Styles>
+    <StackPanel>
+        <StackPanel Name="PART_Row"
+                    Classes="row" Classes.selected="{Binding IsSelected}"
+                    Orientation="Horizontal" Spacing="4"
+                    DragDrop.AllowDrop="True"
+                    Tapped="OnRowTapped"
+                    DoubleTapped="OnRowDoubleTapped">
+            <StackPanel.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Expand" Click="OnMenuExpand"
+                              IsEnabled="{Binding CanExpand}" />
+                    <MenuItem Header="Collapse" Click="OnMenuCollapse"
+                              IsEnabled="{Binding CanCollapse}" />
+                    <Separator />
+                    <MenuItem Header="Expand All" Click="OnMenuExpandAll"
+                              IsEnabled="{Binding HasChildren}" />
+                    <MenuItem Header="Collapse All" Click="OnMenuCollapseAll"
+                              IsEnabled="{Binding HasChildren}" />
+                </ContextMenu>
+            </StackPanel.ContextMenu>
+            <Border Classes="expander"
+                    Width="20" Height="20"
+                    Background="Transparent"
+                    Cursor="Hand"
+                    IsVisible="{Binding HasChildren}"
+                    Tapped="OnExpanderTapped">
+                <TextBlock Text="{Binding ExpanderSymbol}"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+            </Border>
+            <Border Width="20" IsVisible="{Binding !HasChildren}" />
+            <ContentControl Content="{Binding Icon}"
+                            IsVisible="{Binding HasIcon}"
+                            Width="16" Height="16"
+                            VerticalAlignment="Center"
+                            Margin="0,0,4,0">
+                <ContentControl.DataTemplates>
+                    <DataTemplate DataType="media:Geometry">
+                        <PathIcon Data="{Binding}" Width="16" Height="16" />
+                    </DataTemplate>
+                    <DataTemplate DataType="imaging:Bitmap">
+                        <Image Source="{Binding}" Stretch="Uniform" />
+                    </DataTemplate>
+                </ContentControl.DataTemplates>
+            </ContentControl>
+            <TextBlock Text="{Binding DisplayMember}" VerticalAlignment="Center" />
+        </StackPanel>
+        <ItemsControl ItemsSource="{Binding Children}"
+                      IsVisible="{Binding IsExpanded}"
+                      Margin="20,0,0,0">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="controls:LawTreeViewItem">
+                    <controls:LawTreeViewItemControl />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

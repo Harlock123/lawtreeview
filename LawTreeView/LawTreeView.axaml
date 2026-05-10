@@ -1,0 +1,16 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:LawTreeView.Controls"
+             x:Class="LawTreeView.Controls.LawTreeView">
+    <ScrollViewer Background="Transparent"
+                  HorizontalScrollBarVisibility="Auto"
+                  VerticalScrollBarVisibility="Auto">
+        <ItemsControl Name="PART_Root" Background="Transparent">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate DataType="controls:LawTreeViewItem">
+                    <controls:LawTreeViewItemControl />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </ScrollViewer>
+</UserControl>

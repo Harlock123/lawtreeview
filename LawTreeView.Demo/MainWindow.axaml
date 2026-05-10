@@ -1,0 +1,40 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:LawTreeView.Controls;assembly=LawTreeView"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="LawTreeView.Demo.MainWindow"
+        Title="LawTreeView.Demo"
+        Width="720" Height="560">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Padding="10,8" BorderBrush="#DDD" BorderThickness="0,0,0,1">
+            <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                <CheckBox Name="DragDropToggle" Content="Drag &amp; Drop" />
+                <Border Width="1" Background="#DDD" Margin="4,0" />
+                <TextBlock Text="Size:" VerticalAlignment="Center" />
+                <Slider Name="SizeSlider" Width="120" Minimum="10" Maximum="24"
+                        TickFrequency="1" IsSnapToTickEnabled="True"
+                        VerticalAlignment="Center" />
+                <TextBlock Width="22" VerticalAlignment="Center"
+                           Text="{Binding ElementName=SizeSlider, Path=Value, StringFormat='{}{0:0}'}" />
+                <ToggleButton Name="BoldBtn" Content="B"
+                              Width="30" Padding="0" FontWeight="Bold" />
+                <ToggleButton Name="ItalicBtn" Content="I"
+                              Width="30" Padding="0" FontStyle="Italic" />
+                <Border Width="1" Background="#DDD" Margin="4,0" />
+                <TextBlock Text="Theme:" VerticalAlignment="Center" />
+                <ComboBox Name="ThemeBox" Width="100" SelectedIndex="0">
+                    <ComboBoxItem Content="Light" />
+                    <ComboBoxItem Content="Dark" />
+                    <ComboBoxItem Content="Sepia" />
+                </ComboBox>
+            </StackPanel>
+        </Border>
+        <Grid Margin="12">
+            <controls:LawTreeView Name="Tree"
+                                  FontFamily="Inter"
+                                  FontSize="14" />
+        </Grid>
+    </DockPanel>
+</Window>
