@@ -52,33 +52,20 @@ public partial class MainWindow : Window
 
     private void ApplyTheme(int index)
     {
-        switch (index)
+        var theme = index switch
         {
-            case 0: // Light
-                Tree.Background = new SolidColorBrush(Color.Parse("#EEF2F7"));
-                Tree.ItemBackground = Brushes.White;
-                Tree.Foreground = new SolidColorBrush(Color.Parse("#222222"));
-                Tree.SelectedItemBackground = new SolidColorBrush(Color.Parse("#0078D4"));
-                Tree.SelectedItemForeground = Brushes.White;
-                Tree.ItemHoverBackground = new SolidColorBrush(Color.FromArgb(0x40, 0, 0, 0));
-                break;
-            case 1: // Dark
-                Tree.Background = new SolidColorBrush(Color.Parse("#1E1E1E"));
-                Tree.ItemBackground = new SolidColorBrush(Color.Parse("#252526"));
-                Tree.Foreground = Brushes.White;
-                Tree.SelectedItemBackground = new SolidColorBrush(Color.Parse("#0078D4"));
-                Tree.SelectedItemForeground = Brushes.White;
-                Tree.ItemHoverBackground = new SolidColorBrush(Color.FromArgb(0x50, 255, 255, 255));
-                break;
-            case 2: // Sepia
-                Tree.Background = new SolidColorBrush(Color.Parse("#F5EBD8"));
-                Tree.ItemBackground = new SolidColorBrush(Color.Parse("#FAF3E0"));
-                Tree.Foreground = new SolidColorBrush(Color.Parse("#5C4A35"));
-                Tree.SelectedItemBackground = new SolidColorBrush(Color.Parse("#A8845C"));
-                Tree.SelectedItemForeground = Brushes.White;
-                Tree.ItemHoverBackground = new SolidColorBrush(Color.FromArgb(0x40, 92, 74, 53));
-                break;
-        }
+            0 => LawTreeViewThemes.Light,
+            1 => LawTreeViewThemes.Dark,
+            2 => LawTreeViewThemes.Sepia,
+            3 => LawTreeViewThemes.SolarizedLight,
+            4 => LawTreeViewThemes.SolarizedDark,
+            5 => LawTreeViewThemes.Nord,
+            6 => LawTreeViewThemes.Dracula,
+            7 => LawTreeViewThemes.Monokai,
+            8 => LawTreeViewThemes.HighContrast,
+            _ => LawTreeViewThemes.Light,
+        };
+        Tree.Apply(theme);
     }
 
     private static ObservableCollection<LawTreeViewItem> BuildSampleData()

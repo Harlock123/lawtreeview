@@ -24,10 +24,16 @@
                               Width="30" Padding="0" FontStyle="Italic" />
                 <Border Width="1" Background="#DDD" Margin="4,0" />
                 <TextBlock Text="Theme:" VerticalAlignment="Center" />
-                <ComboBox Name="ThemeBox" Width="100" SelectedIndex="0">
+                <ComboBox Name="ThemeBox" Width="150" SelectedIndex="0">
                     <ComboBoxItem Content="Light" />
                     <ComboBoxItem Content="Dark" />
                     <ComboBoxItem Content="Sepia" />
+                    <ComboBoxItem Content="Solarized Light" />
+                    <ComboBoxItem Content="Solarized Dark" />
+                    <ComboBoxItem Content="Nord" />
+                    <ComboBoxItem Content="Dracula" />
+                    <ComboBoxItem Content="Monokai" />
+                    <ComboBoxItem Content="High Contrast" />
                 </ComboBox>
             </StackPanel>
         </Border>
