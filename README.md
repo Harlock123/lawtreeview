@@ -34,7 +34,7 @@ dotnet run --project LawTreeView.Demo
 
 # Pack the NuGet
 dotnet pack LawTreeView/LawTreeView.csproj -c Release
-# → LawTreeView/bin/Release/LawTreeView.0.1.0.nupkg (+ .snupkg)
+# → LawTreeView/bin/Release/LawTreeView.<Version>.nupkg (+ .snupkg)
 ```
 
 The demo's toolbar lets you toggle drag-drop, change font size, switch Bold/Italic, and pick between Light / Dark / Sepia themes — useful for exercising the styling properties.
